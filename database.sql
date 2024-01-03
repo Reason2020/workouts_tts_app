@@ -33,3 +33,23 @@ CREATE TABLE drills (
     drill_title VARCHAR(80) NOT NULL,
     drill_description VARCHAR(80) NOT NULL
 );
+
+//change data type for drills
+ALTER TABLE drills
+ALTER COLUMN drill_description SET DATA TYPE VARCHAR(180);
+
+//add new drill
+INSERT INTO drills (drill_id, drill_title, drill_description) VALUES ('9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d', 'Core Drills', 'Core Drills is a collection of exercises that is focused on building your core strength');
+
+//get all drills
+SELECT * FROM drills;
+
+//get drill by id
+SELECT * FROM drill WHERE drill_id='9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
+
+//update drill
+UPDATE drills SET drill_title='Back Drills', drill_description='Back Drills is a collection of exercises that is focues on building your back muscles';
+
+//delete drill
+DELETE FROM drills WHERE drill_id='9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
+

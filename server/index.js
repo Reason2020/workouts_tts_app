@@ -3,6 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const morgan = require('morgan');
 const exercisesRoute = require('./routes/exercises');
+const drillsRoute = require('./routes/drills');
 
 //other variables
 const app = express();
@@ -19,7 +20,9 @@ app.get('/test', (req, res) => {
         message: "Successful"
     });
 });
-app.use('/api/v1/exercises', exercisesRoute);
+app.use('/api/v1/workouts/exercises', exercisesRoute);
+app.use('/api/v1/workouts/drills', drillsRoute);
+
 //app
 app.listen(PORT, () => {
     console.log(`Server listening at port ${PORT}`);
