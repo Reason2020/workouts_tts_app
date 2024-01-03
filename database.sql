@@ -20,3 +20,16 @@ SELECT * FROM exercises;
 
 //get exercise by exercise_id
 SELECT * FROM exercises WHERE exercise_id = '3f333df6-90a4-4fda-8dd3-9485d27cee36';
+
+//update exercise by exercise_id
+UPDATE TABLE exercises SET exercise_title='Update Test', exercise_description='Update Test Description', exercise_duration='30' WHERE exercise='3f333df6-90a4-4fda-8dd3-9485d27cee36'
+
+//delete exercise by exercise_id
+DELETE FROM exercises WHERE exercise_id='3f333df6-90a4-4fda-8dd3-9485d27cee36';
+
+//create table drills
+CREATE TABLE drills (
+    drill_id uuid NOT NULL PRIMARY KEY,
+    drill_title VARCHAR(80) NOT NULL,
+    drill_description VARCHAR(80) NOT NULL
+);
