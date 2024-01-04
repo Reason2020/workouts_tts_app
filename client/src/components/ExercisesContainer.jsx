@@ -28,16 +28,22 @@ const ExercisesContainer = () => {
             <Link to={'/exercises'} className='text-blue-600 font-light hover:underline'>VIEW ALL EXERCISES</Link>
         </div>
         {
-            exercises ? (exercises.length > 3 ? exercises.slice(0, 3).map(exercise => (
+            exercises ? (exercises.length > 3 ? exercises.slice(0, 3).map((exercise, index) => (
                 <ExerciseCard 
                     key={exercise.exercise_id}
+                    exerciseIndex={index}
+                    exercises={exercises}
+                    setExercises={setExercises}
                     exerciseId={exercise.exercise_id} 
                     exerciseTitle={exercise.exercise_title} 
                     exerciseDescription={exercise.exercise_description}
                     exerciseDuration={exercise.exercise_duration.seconds}/>
-            )) : exercises.map((exercise) => (
+            )) : exercises.map((exercise, index) => (
                 <ExerciseCard 
-                    key={exercise.exercise_id} 
+                    key={exercise.exercise_id}
+                    exerciseIndex={index}
+                    exercises={exercises}
+                    setExercises={setExercises} 
                     exerciseId={exercise.exercise_id}
                     exerciseTitle={exercise.exercise_title} 
                     exerciseDescription={exercise.exercise_description}

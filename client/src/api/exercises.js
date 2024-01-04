@@ -6,3 +6,8 @@ export const getAllExercises = async () => {
     const response = await axios.get(`${BASE_API_URL}/exercises`);
     return response.data;
 }
+
+export const deleteExerciseById = async (id) => {
+    const response = await axios.delete(`${BASE_API_URL}/exercises/${id}`);
+    return response.data;
+}

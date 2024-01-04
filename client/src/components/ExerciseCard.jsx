@@ -1,9 +1,21 @@
 import React from 'react'
 import { MdEdit, MdDelete } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
+import { deleteExerciseById } from '../api/exercises';
 
-const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId }) => {
+const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex }) => {
     const navigate = useNavigate();
+
+    const deleteExercise = async (id) => {
+        const response = await deleteExerciseById(id);
+        console.log("Delete response: ", response);
+
+        //for client side instant delete feel
+        const exercisesAfterDeleting = exercises.slice(0, exerciseIndex).concat(exercises.slice(exerciseIndex + 1, exercises.length));
+        setExercises(exercisesAfterDeleting);
+
+        //TODO: Add a delete modal here later
+    }
 
   return (
     <div className='flex flex-col gap-5 px-5 py-5 rounded-sm shadow-md'>
@@ -16,7 +28,9 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
                     <MdEdit className='text-blue-600' />
                     Edit
                 </button>
-                <button className='flex flex-row items-center gap-1 text-red-700'>
+                <button 
+                    className='flex flex-row items-center gap-1 text-red-700'
+                    onClick={() => deleteExercise(exerciseId)}>
                     <MdDelete className='text-red-700' />
                     Delete
                 </button>

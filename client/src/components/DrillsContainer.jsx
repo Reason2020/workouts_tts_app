@@ -23,18 +23,24 @@ const DrillsContainer = () => {
             <Link to={'/drills'} className='text-blue-600 font-light hover:underline'>VIEW ALL DRILLS</Link>
         </div>
         {
-            drills ? (drills.length > 3 ? drills.slice(0, 3).map((drill) => (
+            drills ? (drills.length > 3 ? drills.slice(0, 3).map((drill, index) => (
                 <DrillsCard 
                     key={drill.drill_id}
+                    drillIndex={index}
                     drillId={drill.drill_id} 
                     drillTitle={drill.drill_title} 
-                    drillDescription={drill.drill_description} />
-            )) : drills.map((drill) => (
+                    drillDescription={drill.drill_description}
+                    drills={drills}
+                    setDrills={setDrills} />
+            )) : drills.map((drill, index) => (
                 <DrillsCard 
-                    key={drill.drill_id} 
+                    key={drill.drill_id}
+                    drillIndex={index} 
                     drillId={drill.drill_id}
                     drillTitle={drill.drill_title} 
-                    drillDescription={drill.drill_description} />
+                    drillDescription={drill.drill_description}
+                    drills={drills}
+                    setDrills={setDrills} />
             ))) : null
         }
         <button 
