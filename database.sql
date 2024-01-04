@@ -53,3 +53,25 @@ UPDATE drills SET drill_title='Back Drills', drill_description='Back Drills is a
 //delete drill
 DELETE FROM drills WHERE drill_id='9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
 
+//create table exercises_drills junction table
+CREATE TABLE exercises_drills (
+    exercise_id uuid,
+    drill_id uuid,
+    FOREIGN KEY (exercise_id) REFERENCES exercises(exercise_id),
+    FOREIGN KEY (drill_id) REFERENCES drills(drill_id)
+);
+
+//add new junction data
+INSERT INTO exercises_drills (exercise_id, drill_id) VALUES ('40e6215d-b5c6-4896-987c-f30f3678f608', '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d');
+
+//get all the exercises that are tied up with at least one drill
+SELECT * FROM exercises_drills;
+
+//get all the exercises in a drill
+SELECT ex.* FROM exercises ex JOIN exercises_drills ed ON ex.exercise_id=ed.exercise_id WHERE ed.drill_id='9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d';
+
+//add a column in junction table
+ALTER TABLE exercises_drills ADD COLUMN exercises_drills_id uuid PRIMARY KEY;
+
+//change one exercise to another in a drill
+UPDATE exercises_drills SET exercise_id=''

@@ -4,6 +4,7 @@ require('dotenv').config();
 const morgan = require('morgan');
 const exercisesRoute = require('./routes/exercises');
 const drillsRoute = require('./routes/drills');
+const exercisesDrillsRoute = require('./routes/exercises_drills');
 
 //other variables
 const app = express();
@@ -22,6 +23,7 @@ app.get('/test', (req, res) => {
 });
 app.use('/api/v1/workouts/exercises', exercisesRoute);
 app.use('/api/v1/workouts/drills', drillsRoute);
+app.use('/api/v1/workouts/exercises_drills', exercisesDrillsRoute);
 
 //app
 app.listen(PORT, () => {
