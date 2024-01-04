@@ -23,13 +23,13 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
             <h4 className='text-blue-600 text-2xl font-bold'>{exerciseTitle}</h4>
             <div className='flex flex-row items-center gap-3'>
                 <button 
-                    className='flex flex-row items-center gap-1 text-blue-600'
+                    className='flex flex-row items-center gap-1 text-blue-600 hover:scale-110 transition-all'
                     onClick={(ev) => navigate(`/exercises/${exerciseId}`)}>
                     <MdEdit className='text-blue-600' />
                     Edit
                 </button>
                 <button 
-                    className='flex flex-row items-center gap-1 text-red-700'
+                    className='flex flex-row items-center gap-1 text-red-700 hover:scale-110 transition-all'
                     onClick={() => deleteExercise(exerciseId)}>
                     <MdDelete className='text-red-700' />
                     Delete
