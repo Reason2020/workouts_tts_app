@@ -20,23 +20,25 @@ const DrillsContainer = () => {
     <div className='flex flex-col justify-center gap-5 px-5 py-2'>
         <div className='flex flex-row justify-between items-end'>
             <h3 className='text-black font-black text-3xl'>My Drills</h3>
-            <Link to={'/drills'} className='text-blue-600 font-light'>VIEW ALL DRILLS</Link>
+            <Link to={'/drills'} className='text-blue-600 font-light hover:underline'>VIEW ALL DRILLS</Link>
         </div>
         {
             drills ? (drills.length > 3 ? drills.slice(0, 3).map((drill) => (
                 <DrillsCard 
-                    key={drill.drill_id} 
+                    key={drill.drill_id}
+                    drillId={drill.drill_id} 
                     drillTitle={drill.drill_title} 
                     drillDescription={drill.drill_description} />
             )) : drills.map((drill) => (
                 <DrillsCard 
                     key={drill.drill_id} 
+                    drillId={drill.drill_id}
                     drillTitle={drill.drill_title} 
                     drillDescription={drill.drill_description} />
             ))) : null
         }
         <button 
-            className='bg-blue-600 py-3 rounded-md text-white font-normal text-xl'
+            className='bg-blue-600 py-3 rounded-md text-white font-normal text-xl hover:scale-y-110 hover:bg-blue-700 hover:transition-all'
             onClick={(ev) => navigate('/drills/new')}>
             Add New Drill
         </button>
