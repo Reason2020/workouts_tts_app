@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Navbar'
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
 import Modal from './Modal'
+import { ModalContext } from '../contexts/ModalContext'
 
 const Layout = () => {
-  const modalIsVisible = true;
+  const { modalIsVisible } = useContext(ModalContext);
+
   return (
     <main>
         <Navbar />

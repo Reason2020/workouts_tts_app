@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdEdit, MdDelete } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { deleteExerciseById } from '../api/exercises';
+import { ModalContext } from '../contexts/ModalContext';
 
 const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex }) => {
     const navigate = useNavigate();
+    const { modalIsVisible, setModalIsVisible, setModalAccept } = useContext(ModalContext);
 
     const deleteExercise = async (id) => {
         const response = await deleteExerciseById(id);
@@ -16,6 +18,20 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
 
         //TODO: Add a delete modal here later
     }
+
+    const toggleModalVisibility = () => {
+        setModalIsVisible((modalIsVisible) => {
+            const modalIsVisibleCopy = !modalIsVisible;
+            if (!modalIsVisibleCopy) {
+                setModalAccept(null)
+            } else {
+                setModalAccept(() => () => deleteExercise(exerciseId))
+            }
+            return modalIsVisibleCopy;
+        })
+    }
+
+
 
   return (
     <div className='flex flex-col gap-5 px-5 py-5 rounded-sm shadow-md'>
@@ -30,7 +46,7 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
                 </button>
                 <button 
                     className='flex flex-row items-center gap-1 text-red-700 hover:scale-110 transition-all'
-                    onClick={() => deleteExercise(exerciseId)}>
+                    onClick={toggleModalVisibility}>
                     <MdDelete className='text-red-700' />
                     Delete
                 </button>
