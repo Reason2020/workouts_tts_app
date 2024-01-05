@@ -6,7 +6,7 @@ import { ModalContext } from '../contexts/ModalContext';
 
 const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex }) => {
     const navigate = useNavigate();
-    const { modalIsVisible, setModalIsVisible, setModalAccept } = useContext(ModalContext);
+    const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
 
     const deleteExercise = async (id) => {
         const response = await deleteExerciseById(id);
@@ -26,6 +26,7 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
                 setModalAccept(null)
             } else {
                 setModalAccept(() => () => deleteExercise(exerciseId))
+                setModalTitle("Are you sure you want to delete exercise?");
             }
             return modalIsVisibleCopy;
         })

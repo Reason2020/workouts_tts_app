@@ -1,19 +1,36 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdEdit, MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { deleteDrillById } from '../api/drills';
+import { ModalContext } from '../contexts/ModalContext';
 
 const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills, setDrills }) => {
     const navigate = useNavigate();
 
+    const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
+
     const deleteDrill = async (id) => {
         const response = await deleteDrillById(id);
+        console.log("Response from delete drill function: ", response);
 
         //for instant delete feel
         const drillsAfterDeleting = drills.slice(0, drillIndex).concat(drills.slice(drillIndex + 1, drillIndex.length));
         setDrills(drillsAfterDeleting)
 
         //TODO: Add a modal here later
+    }
+
+    const toggleModalVisibility = () => {
+        setModalIsVisible((modalIsVisible) => {
+            const modalIsVisibleCopy = !modalIsVisible;
+            if (!modalIsVisibleCopy) {
+                setModalAccept(null)
+            } else {
+                setModalAccept(() => () => deleteDrill(drillId))
+                setModalTitle("Are you sure you want to delete drill?");
+            }
+            return modalIsVisibleCopy;
+        })
     }
 
   return (
@@ -29,7 +46,7 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
                 </button>
                 <button 
                     className='flex flex-row items-center gap-1 text-red-700 hover:scale-110 transition-all'
-                    onClick={(ev) => deleteDrill(drillId)}>
+                    onClick={toggleModalVisibility}>
                     <MdDelete className='text-red-700' />
                     Delete
                 </button>
