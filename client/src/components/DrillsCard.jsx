@@ -52,7 +52,7 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
                 </button>
             </div>
         </div>
-        <p className='text-black font-normal text-base'>{drillDescription}</p>
+        <p className='text-black font-normal text-base'>{drillDescription.length > 100 ? drillDescription.slice(0, 90) + '...' : drillDescription}</p>
     </div>
   )
 }

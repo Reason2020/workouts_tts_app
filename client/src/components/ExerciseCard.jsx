@@ -54,7 +54,7 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
             </div>
         </div>
         <div className='flex flex-row justify-between items-center'>
-            <p className='text-black font-normal text-base'>{exerciseDescription}</p>
+            <p className='text-black font-normal text-base'>{exerciseDescription.length > 80 ? exerciseDescription.slice(0, 80) + '...' : exerciseDescription}</p>
             <p className='text-blue-600 font-semibold text-base'>{exerciseDuration} seconds</p>
         </div>
     </div>
