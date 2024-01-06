@@ -30,7 +30,7 @@ const AllExercises = () => {
           Add New Exercise
         </button>
       </div>
-      <div className='flex flex-col gap-3'>
+      <div className='flex flex-col gap-3 pb-10'>
         {
           exercises ? exercises.map((exercise, index) => (
             <ExerciseCard 

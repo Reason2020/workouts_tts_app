@@ -32,7 +32,7 @@ const AllDrills = () => {
           Add New Drill
         </button>
       </div>
-      <div className='flex flex-col gap-3'>
+      <div className='flex flex-col gap-3 pb-10'>
         {
           drills ? drills.map((drill, index) => (
             <DrillsCard 

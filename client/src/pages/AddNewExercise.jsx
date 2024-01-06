@@ -50,8 +50,9 @@ const AddNewExercise = () => {
         onSubmit={submitForm} 
         className='flex flex-col justify-center items-center w-1/2 my-0 mx-auto gap-3 py-5 px-5 rounded-md shadow-xl'>
         {
-          formEssentials.map(item => (
+          formEssentials.map((item, index) => (
             <InputField 
+              key={index}
               label={item.label}
               inputType={item.inputType}
               value={item.value}
