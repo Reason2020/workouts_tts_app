@@ -56,7 +56,7 @@ const ExerciseDetail = () => {
   ]
 
   return (
-    <div>
+    <div className='px-5 py-5 flex flex-col gap-5'>
       <SubNavigationHeader 
         route={'/'}
         subheaderText={'Edit Exercise'}

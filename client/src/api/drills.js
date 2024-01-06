@@ -7,6 +7,11 @@ export const getAllDrills = async () => {
     return response.data;
 }
 
+export const getDrillById = async (id) => {
+    const response = await axios.get(`${BASE_API_URL}/drills/${id}`);
+    return response.data;
+}
+
 export const addNewDrill = async (title, description) => {
     const response = await axios.post(
         `${BASE_API_URL}/drills`,
@@ -15,6 +20,17 @@ export const addNewDrill = async (title, description) => {
             description
         }
     )
+    return response.data;
+}
+
+export const updateDrillById = async (id, title, description) => {
+    const response = await axios.put(
+        `${BASE_API_URL}/drills/${id}`,
+        {
+            title,
+            description
+        }
+    );
     return response.data;
 }
 
