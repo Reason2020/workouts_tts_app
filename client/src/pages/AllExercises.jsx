@@ -42,6 +42,7 @@ const AllExercises = () => {
               exerciseTitle={exercise.exercise_title} 
               exerciseDescription={exercise.exercise_description}
               exerciseDuration={exercise.exercise_duration.seconds}
+              keywordsCapacity={180}
             />
           )) : <h4 className='text-blue-600 font-semibold text-2xl'>No Exercises</h4>
         }

@@ -31,7 +31,8 @@ const DrillsContainer = () => {
                     drillTitle={drill.drill_title} 
                     drillDescription={drill.drill_description}
                     drills={drills}
-                    setDrills={setDrills} />
+                    setDrills={setDrills}
+                    keywordsCapacity={80} />
             )) : drills.map((drill, index) => (
                 <DrillsCard 
                     key={drill.drill_id}
@@ -40,7 +41,8 @@ const DrillsContainer = () => {
                     drillTitle={drill.drill_title} 
                     drillDescription={drill.drill_description}
                     drills={drills}
-                    setDrills={setDrills} />
+                    setDrills={setDrills}
+                    keywordsCapacity={80} />
             ))) : null
         }
         <button 

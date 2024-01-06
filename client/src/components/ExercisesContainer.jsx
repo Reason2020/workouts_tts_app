@@ -37,7 +37,8 @@ const ExercisesContainer = () => {
                     exerciseId={exercise.exercise_id} 
                     exerciseTitle={exercise.exercise_title} 
                     exerciseDescription={exercise.exercise_description}
-                    exerciseDuration={exercise.exercise_duration.seconds}/>
+                    exerciseDuration={exercise.exercise_duration.seconds}
+                    keywordsCapacity={80}/>
             )) : exercises.map((exercise, index) => (
                 <ExerciseCard 
                     key={exercise.exercise_id}
@@ -47,7 +48,8 @@ const ExercisesContainer = () => {
                     exerciseId={exercise.exercise_id}
                     exerciseTitle={exercise.exercise_title} 
                     exerciseDescription={exercise.exercise_description}
-                    exerciseDuration={exercise.exercise_duration.seconds}/>
+                    exerciseDuration={exercise.exercise_duration.seconds}
+                    keywordsCapacity={80}/>
             ))) : null
         }
         <button 

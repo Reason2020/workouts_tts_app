@@ -44,7 +44,8 @@ const AllDrills = () => {
               drillTitle={drill.drill_title} 
               drillDescription={drill.drill_description}
               drills={drills}
-              setDrills={setDrills}/>
+              setDrills={setDrills}
+              keywordsCapacity={80}/>
           )) : <h4>No Drills</h4>
         }
       </div>

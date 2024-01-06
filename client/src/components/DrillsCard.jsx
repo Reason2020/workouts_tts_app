@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { deleteDrillById } from '../api/drills';
 import { ModalContext } from '../contexts/ModalContext';
 
-const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills, setDrills }) => {
+const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills, setDrills, keywordsCapacity }) => {
     const navigate = useNavigate();
 
     const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
@@ -52,7 +52,9 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
                 </button>
             </div>
         </div>
-        <p className='text-black font-normal text-base'>{drillDescription.length > 100 ? drillDescription.slice(0, 90) + '...' : drillDescription}</p>
+        <p className='text-black font-normal text-base'>
+            {drillDescription.length > keywordsCapacity ? drillDescription.slice(0, keywordsCapacity) + '...' : drillDescription}
+        </p>
     </div>
   )
 }

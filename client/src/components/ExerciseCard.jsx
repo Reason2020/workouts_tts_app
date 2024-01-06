@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { deleteExerciseById } from '../api/exercises';
 import { ModalContext } from '../contexts/ModalContext';
 
-const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex }) => {
+const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex, keywordsCapacity }) => {
     const navigate = useNavigate();
     const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
 
@@ -54,7 +54,7 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
             </div>
         </div>
         <div className='flex flex-row justify-between items-center'>
-            <p className='text-black font-normal text-base'>{exerciseDescription.length > 80 ? exerciseDescription.slice(0, 80) + '...' : exerciseDescription}</p>
+            <p className='text-black font-normal text-base'>{(exerciseDescription.length > keywordsCapacity) ? exerciseDescription.slice(0, keywordsCapacity) + '...' : exerciseDescription}</p>
             <p className='text-blue-600 font-semibold text-base'>{exerciseDuration} seconds</p>
         </div>
     </div>
