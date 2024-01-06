@@ -10,7 +10,7 @@ const InputField = ({ label, inputType, value, setValue, formType }) => {
             type={inputType}
             value={value}
             onChange={(ev) => setValue(ev.target.value)} 
-            className='py-2 px-4 border-blue-600 border-2 rounded-md focus:outline-none'/>
+            className='py-2 px-4 border-blue-600 border-2 rounded-md focus:outline-none placeholder:font-bold placeholder:text-base'/>
     </div>
   )
 }

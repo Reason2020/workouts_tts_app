@@ -19,16 +19,16 @@ const AllDrills = () => {
   }, [])
 
   return (
-    <div>
-      <div className='flex flex-row justify-between items-center py-5 px-5'>
+    <div className='px-5 py-5 flex flex-col gap-5'>
+      <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row items-center gap-5'>
           <button onClick={() => navigate('/')}>
             <IoMdArrowRoundBack className='text-blue-600 font-bold text-4xl'/>
           </button>
-          <h3 className='text-blue-600 font-bold text-3xl '>All Drills</h3>
+          <h3 className='text-black font-black text-3xl '>All Drills</h3>
         </div>
         <button 
-          className='flex flex-row gap-3 items-center bg-blue-600 text-white text-base py-3 px-5 font-medium rounded-lg'
+          className='flex flex-row gap-3 items-center bg-blue-600 text-white text-base py-3 px-5 font-medium rounded-lg hover:bg-blue-700 hover:scale-110 transition-all'
           onClick={() => navigate('/drills/new')}>
           <IoMdAdd />
           Add New Drill

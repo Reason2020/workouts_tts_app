@@ -19,18 +19,39 @@ const AddNewExercise = () => {
     }
   }
 
+  const formEssentials = [
+    {
+      label: 'title',
+      inputType: 'text',
+      value: title,
+      setValue: setTitle,
+    },
+    {
+      label: 'description',
+      inputType: 'text',
+      value: description,
+      setValue: setDescription,
+    },
+    {
+      label: 'duration',
+      inputType: 'text',
+      value: duration,
+      setValue: setDuration,
+    }
+  ]
+
   return (
-    <div>
+    <div className='px-5 py-5 flex flex-col gap-5'>
       <div className='flex flex-row gap-5 items-center'>
         <button onClick={() => navigate('/')}>
-          <IoMdArrowRoundBack className='text-blue-600 font-bold text-4xl'/>
+          <IoMdArrowRoundBack className='text-blue-600 font-black text-4xl'/>
         </button>
-        <h3 className='text-blue-600 font-bold text-3xl'>Add New Exercise</h3>
+        <h3 className='text-black font-bold text-3xl'>Add New Exercise</h3>
       </div>
       <form
         onSubmit={submitForm} 
-        className='flex flex-col justify-center items-center w-1/2 my-0 mx-auto gap-3'>
-        <InputField 
+        className='flex flex-col justify-center items-center w-1/2 my-0 mx-auto gap-3 py-5 px-5 rounded-md shadow-xl'>
+        {/* <InputField 
           label={'title'}
           inputType={'text'}
           value={title}
@@ -50,7 +71,18 @@ const AddNewExercise = () => {
           value={duration}
           setValue={setDuration}
           formType={'Exercise'}
-        />
+        /> */}
+        {
+          formEssentials.map(item => (
+            <InputField 
+              label={item.label}
+              inputType={item.inputType}
+              value={item.value}
+              setValue={item.setValue}
+              formType={'Exercise'}
+            />
+          ))
+        }
         <button 
           className='flex flex-row gap-2 bg-blue-600 py-2 px-4 rounded-md justify-center items-center text-white font-semibold text-base hover:bg-blue-700 hover:scale-110 transition-all' >
           <IoMdAdd />

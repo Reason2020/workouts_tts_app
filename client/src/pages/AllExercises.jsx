@@ -21,10 +21,10 @@ const AllExercises = () => {
       <div className='flex flex-row justify-between items-center'>
         <div className='flex flex-row gap-10 items-center'>
           <button onClick={() => navigate('/')}><IoMdArrowRoundBack className='text-blue-600 font-bold text-4xl'/></button>
-          <h3 className='text-blue-600 font-bold text-3xl'>All Exercises</h3>
+          <h3 className='text-black font-black text-3xl'>All Exercises</h3>
         </div>
         <button 
-          className='flex flex-row items-center gap-3 bg-blue-600 text-white font-medium text-base py-3 px-5 rounded-lg'
+          className='flex flex-row items-center gap-3 bg-blue-600 text-white font-medium text-base py-3 px-5 rounded-lg hover:bg-blue-700 hover:scale-110 transition-all'
           onClick={() => navigate('/exercises/new')}>
           <IoMdAdd />
           Add New Exercise
