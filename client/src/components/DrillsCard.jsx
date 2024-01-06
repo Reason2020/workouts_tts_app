@@ -12,8 +12,8 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
     const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext);
 
     const deleteDrill = async (id) => {
-        const response = await deleteDrillById(id);
-        if (response.success) {
+        try {
+            const response = await deleteDrillById(id);
             setMessage("Deleted Drill Successfully!");
             setMessageType("success");
             setShowNotification(true);
@@ -21,7 +21,7 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
             //for instant delete feel
             const drillsAfterDeleting = drills.slice(0, drillIndex).concat(drills.slice(drillIndex + 1, drillIndex.length));
             setDrills(drillsAfterDeleting)
-        } else {
+        } catch (err) {
             setMessage(response.message);
             setMessageType("fail");
             setShowNotification(true);

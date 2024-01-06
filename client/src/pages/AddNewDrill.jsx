@@ -15,14 +15,16 @@ const AddNewDrill = () => {
 
   const submitForm = async (ev) => {
     ev.preventDefault();
-    const response = await addNewDrill(title, description);
-    if (response.success) {
+    try {
+      const response = await addNewDrill(title, description);
+      console.log("Adding Drill Response: ", response);
       navigate('/');
       setMessage("Successfully Added Drill!");
       setMessageType("success");
       setShowNotification(true);
-    } else {
-      setMessage(response.message);
+    } catch (err) {
+      console.log("Error Adding Drill: ", err);
+      setMessage(err.response.data.message);
       setMessageType("fail");
       setShowNotification(true);
     }

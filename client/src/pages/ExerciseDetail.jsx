@@ -30,14 +30,14 @@ const ExerciseDetail = () => {
 
   const submitForm = async (ev) => {
     ev.preventDefault();
-    const response = await updateExerciseById(id, title, description, duration);
-    if (response.success) {
+    try {
+      const response = await updateExerciseById(id, title, description, duration);
       navigate('/');
       setMessage("Successfully Edited Exercise!");
       setMessageType("success");
       setShowNotification(true);
-    } else {
-      setMessage(response.message);
+    } catch (err) {
+      setMessage(err.response.data.message);
       setMessageType("fail");
       setShowNotification(true);
     }

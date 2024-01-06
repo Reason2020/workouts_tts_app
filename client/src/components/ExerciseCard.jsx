@@ -11,8 +11,8 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
     const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext);
 
     const deleteExercise = async (id) => {
-        const response = await deleteExerciseById(id);
-        if (response.success) {
+        try {
+            const response = await deleteExerciseById(id);
             setMessage("Successfully Deleted Exercise!");
             setMessageType("success");
             setShowNotification("success");
@@ -20,7 +20,7 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
             //for client side instant delete feel
             const exercisesAfterDeleting = exercises.slice(0, exerciseIndex).concat(exercises.slice(exerciseIndex + 1, exercises.length));
             setExercises(exercisesAfterDeleting);
-        } else {
+        } catch (err) {
             setMessage(response.message);
             setMessageType("fail");
             setShowNotification(true);

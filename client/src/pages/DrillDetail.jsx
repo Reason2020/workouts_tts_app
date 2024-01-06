@@ -29,14 +29,14 @@ const DrillDetail = () => {
 
   const submitForm = async (ev) => {
     ev.preventDefault();
-    const response = await updateDrillById(id, title, description);
-    if (response.success) {
+    try {
+      const response = await updateDrillById(id, title, description);
       navigate('/');
       setMessage("Successfully Edited Drill!");
       setMessageType("success");
       setShowNotification(true);
-    } else {
-      setMessage(response.message);
+    } catch (err) {
+      setMessage(err.response.data.message);
       setMessageType("fail");
       setShowNotification(true);
     }
