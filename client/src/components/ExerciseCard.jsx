@@ -20,6 +20,10 @@ const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, ex
             //for client side instant delete feel
             const exercisesAfterDeleting = exercises.slice(0, exerciseIndex).concat(exercises.slice(exerciseIndex + 1, exercises.length));
             setExercises(exercisesAfterDeleting);
+        } else {
+            setMessage(response.message);
+            setMessageType("fail");
+            setShowNotification(true);
         }
     }
 

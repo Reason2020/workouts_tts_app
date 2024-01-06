@@ -22,6 +22,10 @@ const AddNewExercise = () => {
       setMessage("Successfully Added New Exercise!");
       setMessageType("success");
       setShowNotification(true);
+    } else {
+      setMessage(response.message);
+      setMessageType("fail");
+      setShowNotification(true);
     }
   }
 

@@ -21,6 +21,10 @@ const AddNewDrill = () => {
       setMessage("Successfully Added Drill!");
       setMessageType("success");
       setShowNotification(true);
+    } else {
+      setMessage(response.message);
+      setMessageType("fail");
+      setShowNotification(true);
     }
   }
 

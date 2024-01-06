@@ -21,8 +21,11 @@ const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills,
             //for instant delete feel
             const drillsAfterDeleting = drills.slice(0, drillIndex).concat(drills.slice(drillIndex + 1, drillIndex.length));
             setDrills(drillsAfterDeleting)
+        } else {
+            setMessage(response.message);
+            setMessageType("fail");
+            setShowNotification(true);
         }
-
     }
 
     const toggleModalVisibility = () => {

@@ -36,6 +36,10 @@ const ExerciseDetail = () => {
       setMessage("Successfully Edited Exercise!");
       setMessageType("success");
       setShowNotification(true);
+    } else {
+      setMessage(response.message);
+      setMessageType("fail");
+      setShowNotification(true);
     }
   }
 
