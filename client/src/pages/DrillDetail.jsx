@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SubNavigationHeader from '../components/SubNavigationHeader'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getDrillById, updateDrillById } from '../api/drills';
 import InputField from '../components/InputField';
 import { MdEdit } from 'react-icons/md';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const DrillDetail = () => {
   const [ title, setTitle ] = useState("");
   const [ description, setDescription ] = useState("");
-  
+  const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext)
+
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -30,6 +32,9 @@ const DrillDetail = () => {
     const response = await updateDrillById(id, title, description);
     if (response.success) {
       navigate('/');
+      setMessage("Successfully Edited Drill!");
+      setMessageType("success");
+      setShowNotification(true);
     }
   }
 

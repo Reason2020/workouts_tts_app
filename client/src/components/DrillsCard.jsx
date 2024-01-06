@@ -3,21 +3,26 @@ import { MdEdit, MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { deleteDrillById } from '../api/drills';
 import { ModalContext } from '../contexts/ModalContext';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const DrillsCard = ({ drillId, drillTitle, drillDescription, drillIndex, drills, setDrills, keywordsCapacity }) => {
     const navigate = useNavigate();
 
     const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
+    const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext);
 
     const deleteDrill = async (id) => {
         const response = await deleteDrillById(id);
-        console.log("Response from delete drill function: ", response);
+        if (response.success) {
+            setMessage("Deleted Drill Successfully!");
+            setMessageType("success");
+            setShowNotification(true);
 
-        //for instant delete feel
-        const drillsAfterDeleting = drills.slice(0, drillIndex).concat(drills.slice(drillIndex + 1, drillIndex.length));
-        setDrills(drillsAfterDeleting)
+            //for instant delete feel
+            const drillsAfterDeleting = drills.slice(0, drillIndex).concat(drills.slice(drillIndex + 1, drillIndex.length));
+            setDrills(drillsAfterDeleting)
+        }
 
-        //TODO: Add a modal here later
     }
 
     const toggleModalVisibility = () => {

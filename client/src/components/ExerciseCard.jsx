@@ -3,20 +3,24 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { deleteExerciseById } from '../api/exercises';
 import { ModalContext } from '../contexts/ModalContext';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const ExerciseCard = ({ exerciseTitle, exerciseDescription, exerciseDuration, exerciseId, exercises, setExercises, exerciseIndex, keywordsCapacity }) => {
     const navigate = useNavigate();
     const { modalIsVisible, setModalIsVisible, setModalAccept, setModalTitle } = useContext(ModalContext);
+    const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext);
 
     const deleteExercise = async (id) => {
         const response = await deleteExerciseById(id);
-        console.log("Delete response: ", response);
+        if (response.success) {
+            setMessage("Successfully Deleted Exercise!");
+            setMessageType("success");
+            setShowNotification("success");
 
-        //for client side instant delete feel
-        const exercisesAfterDeleting = exercises.slice(0, exerciseIndex).concat(exercises.slice(exerciseIndex + 1, exercises.length));
-        setExercises(exercisesAfterDeleting);
-
-        //TODO: Add a delete modal here later
+            //for client side instant delete feel
+            const exercisesAfterDeleting = exercises.slice(0, exerciseIndex).concat(exercises.slice(exerciseIndex + 1, exercises.length));
+            setExercises(exercisesAfterDeleting);
+        }
     }
 
     const toggleModalVisibility = () => {

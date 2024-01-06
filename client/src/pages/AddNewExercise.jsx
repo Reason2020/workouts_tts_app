@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IoMdAdd } from 'react-icons/io'
 import InputField from '../components/InputField';
 import { addNewExercise } from '../api/exercises';
 import { useNavigate } from 'react-router-dom';
 import SubNavigationHeader from '../components/SubNavigationHeader';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const AddNewExercise = () => {
   const [ title, setTitle ] = useState("");
   const [ description, setDescription ] = useState("");
   const [ duration, setDuration ] = useState("");
+  const { setMessage, setShowNotification, setMessageType } = useContext(NotificationContext)
 
   const navigate = useNavigate();
 
@@ -17,6 +19,9 @@ const AddNewExercise = () => {
     const response = await addNewExercise(title, description, duration);
     if (response.success) {
       navigate("/");
+      setMessage("Successfully Added New Exercise!");
+      setMessageType("success");
+      setShowNotification(true);
     }
   }
 

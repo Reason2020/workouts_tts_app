@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import SubNavigationHeader from '../components/SubNavigationHeader'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getExerciseById, updateExerciseById } from '../api/exercises';
 import InputField from '../components/InputField';
 import { MdEdit } from 'react-icons/md';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const ExerciseDetail = () => {
   const [ title, setTitle ] = useState("");
   const [ description, setDescription ] = useState("");
   const [ duration, setDuration ] = useState("");
+  const { setMessage, setMessageType, setShowNotification } = useContext(NotificationContext);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,6 +33,9 @@ const ExerciseDetail = () => {
     const response = await updateExerciseById(id, title, description, duration);
     if (response.success) {
       navigate('/');
+      setMessage("Successfully Edited Exercise!");
+      setMessageType("success");
+      setShowNotification(true);
     }
   }
 

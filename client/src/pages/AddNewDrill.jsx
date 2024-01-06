@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import SubNavigationHeader from '../components/SubNavigationHeader'
 import InputField from '../components/InputField'
 import { IoMdAdd } from 'react-icons/io';
 import { addNewDrill } from '../api/drills';
 import { useNavigate } from 'react-router-dom';
+import { NotificationContext } from '../contexts/NotificationContext';
 
 const AddNewDrill = () => {
   const [ title, setTitle ] = useState("");
   const [ description, setDescription ] = useState("");
+  const { setShowNotification, setMessage, setMessageType } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -16,6 +18,9 @@ const AddNewDrill = () => {
     const response = await addNewDrill(title, description);
     if (response.success) {
       navigate('/');
+      setMessage("Successfully Added Drill!");
+      setMessageType("success");
+      setShowNotification(true);
     }
   }
 
