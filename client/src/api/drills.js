@@ -7,6 +7,17 @@ export const getAllDrills = async () => {
     return response.data;
 }
 
+export const addNewDrill = async (title, description) => {
+    const response = await axios.post(
+        `${BASE_API_URL}/drills`,
+        {
+            title,
+            description
+        }
+    )
+    return response.data;
+}
+
 export const deleteDrillById = async (id) => {
     const response = await axios.delete(`${BASE_API_URL}/drills/${id}`);
     return response.data;

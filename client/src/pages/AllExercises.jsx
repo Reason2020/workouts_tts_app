@@ -3,6 +3,7 @@ import { getAllExercises } from '../api/exercises';
 import { IoMdArrowRoundBack, IoMdAdd } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import ExerciseCard from '../components/ExerciseCard';
+import SubNavigationHeader from '../components/SubNavigationHeader';
 
 const AllExercises = () => {
   const [ exercises, setExercises ] = useState([]);
@@ -19,10 +20,9 @@ const AllExercises = () => {
   return (
     <div className='px-5 py-5 flex flex-col gap-5'>
       <div className='flex flex-row justify-between items-center'>
-        <div className='flex flex-row gap-10 items-center'>
-          <button onClick={() => navigate('/')}><IoMdArrowRoundBack className='text-blue-600 font-bold text-4xl'/></button>
-          <h3 className='text-black font-black text-3xl'>All Exercises</h3>
-        </div>
+        <SubNavigationHeader 
+        route={'/'}
+        subheaderText={'All Exercises'}/>
         <button 
           className='flex flex-row items-center gap-3 bg-blue-600 text-white font-medium text-base py-3 px-5 rounded-lg hover:bg-blue-700 hover:scale-110 transition-all'
           onClick={() => navigate('/exercises/new')}>

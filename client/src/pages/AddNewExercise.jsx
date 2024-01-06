@@ -3,6 +3,7 @@ import { IoMdArrowRoundBack, IoMdAdd } from 'react-icons/io'
 import InputField from '../components/InputField';
 import { addNewExercise } from '../api/exercises';
 import { useNavigate } from 'react-router-dom';
+import SubNavigationHeader from '../components/SubNavigationHeader';
 
 const AddNewExercise = () => {
   const [ title, setTitle ] = useState("");
@@ -42,36 +43,12 @@ const AddNewExercise = () => {
 
   return (
     <div className='px-5 py-5 flex flex-col gap-5'>
-      <div className='flex flex-row gap-5 items-center'>
-        <button onClick={() => navigate('/')}>
-          <IoMdArrowRoundBack className='text-blue-600 font-black text-4xl'/>
-        </button>
-        <h3 className='text-black font-bold text-3xl'>Add New Exercise</h3>
-      </div>
+      <SubNavigationHeader 
+        route={'/'}
+        subheaderText={'Add New Exercise'} />
       <form
         onSubmit={submitForm} 
         className='flex flex-col justify-center items-center w-1/2 my-0 mx-auto gap-3 py-5 px-5 rounded-md shadow-xl'>
-        {/* <InputField 
-          label={'title'}
-          inputType={'text'}
-          value={title}
-          setValue={setTitle}
-          formType={'Exercise'}
-        />
-        <InputField 
-          label={'description'}
-          inputType={'text'}
-          value={description}
-          setValue={setDescription}
-          formType={'Exercise'}
-        />
-        <InputField 
-          label={'duration'}
-          inputType={'text'}
-          value={duration}
-          setValue={setDuration}
-          formType={'Exercise'}
-        /> */}
         {
           formEssentials.map(item => (
             <InputField 
