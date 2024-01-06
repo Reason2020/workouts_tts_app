@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IoMdArrowRoundBack, IoMdAdd } from 'react-icons/io'
+import { IoMdAdd } from 'react-icons/io'
 import InputField from '../components/InputField';
 import { addNewExercise } from '../api/exercises';
 import { useNavigate } from 'react-router-dom';

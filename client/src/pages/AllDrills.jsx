@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { IoMdAdd, IoMdArrowRoundBack } from 'react-icons/io'
+import { IoMdAdd } from 'react-icons/io'
 import { useNavigate } from 'react-router-dom'
 import { getAllDrills } from '../api/drills';
 import DrillsCard from '../components/DrillsCard';

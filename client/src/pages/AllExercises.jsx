@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getAllExercises } from '../api/exercises';
-import { IoMdArrowRoundBack, IoMdAdd } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import ExerciseCard from '../components/ExerciseCard';
 import SubNavigationHeader from '../components/SubNavigationHeader';
